@@ -1,15 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Owin.Hosting;
 
 namespace CpuOffOnWithPi.CpuExe
 {
     class Program
     {
         static void Main(string[] args) {
+            string baseUrl = @"http://*:" + ConfigurationManager.AppSettings["OwinHostPortNumber"];
+            var startupOptions = new StartOptions(baseUrl) {
+                ServerFactory = "Microsoft.Owin.Host.HttpListener"
+            };
+            using (WebApp.Start<ExeOwinStartup>(startupOptions))
+            {
+                Console.WriteLine("Press Enter to quit.");
+                Console.ReadKey();
+            }
         }
 
         /// <summary>

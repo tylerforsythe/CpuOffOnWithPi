@@ -97,7 +97,10 @@ publish/
 
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-#packages/
+packages/
+
+# other directory created by NuGet for Simple.Owin, and possibly others?
+App_Packages/
 
 # Windows Azure Build Output
 csx
