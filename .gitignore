@@ -161,3 +161,8 @@ $RECYCLE.BIN/
 packages/
 .vs/
 
+
+logs/*
+node_modules/
+*/app/lib/*
+tmp

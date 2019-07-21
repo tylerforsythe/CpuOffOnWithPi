@@ -1,4 +1,6 @@
 ﻿
+return; # ABORT for now -- change is happening!
+
 # Copy the www directory to the output dir.
 # This is simpler than trying to remember to make everything in the www folder "copy if changed" build action
 

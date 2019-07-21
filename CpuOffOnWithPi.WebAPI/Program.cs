@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
 
-namespace CpuOffOnWithPi.Web
+namespace CpuOffOnWithPi.WebAPI
 {
     class Program
     {

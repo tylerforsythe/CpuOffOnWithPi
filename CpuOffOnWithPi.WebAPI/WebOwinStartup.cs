@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Configuration;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 
-[assembly: OwinStartup(typeof(CpuOffOnWithPi.Web.WebOwinStartup))]
+[assembly: OwinStartup(typeof(CpuOffOnWithPi.WebAPI.WebOwinStartup))]
 
-namespace CpuOffOnWithPi.Web
+namespace CpuOffOnWithPi.WebAPI
 {
     public class WebOwinStartup
     {
@@ -22,7 +23,7 @@ namespace CpuOffOnWithPi.Web
 
             app.UseWebApi(config);
 
-            var physicalFileSystem = new PhysicalFileSystem(@"./www");
+            var physicalFileSystem = new PhysicalFileSystem(ConfigurationManager.AppSettings["OwinHostWebsitePath"]);
             var options = new FileServerOptions
             {
                 EnableDefaultFiles = true,

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CpuOffOnWithPi.Web;
+using CpuOffOnWithPi.WebAPI;
 
-namespace CpuOffOnWithPi.Web.Controllers.API
+namespace CpuOffOnWithPi.WebAPI.Controllers.API
 {
     public class ValuesController : ApiController
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuOffOnWithPi.Web", "CpuOffOnWithPi.Web\CpuOffOnWithPi.Web.csproj", "{CF55076D-D397-4B41-A40A-6472BD20E985}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuOffOnWithPi.WebAPI", "CpuOffOnWithPi.WebAPI\CpuOffOnWithPi.WebAPI.csproj", "{CF55076D-D397-4B41-A40A-6472BD20E985}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpuOffOnWithPi.CpuExe", "CpuOffOnWithPi.CpuExe\CpuOffOnWithPi.CpuExe.csproj", "{68348242-F41E-4438-BBF0-78966160C519}"
 EndProject
