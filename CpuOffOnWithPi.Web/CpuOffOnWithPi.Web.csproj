@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +48,57 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.FileSystems, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.FileSystems.4.0.1\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.4.0.1\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.4.0.1\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.StaticFiles, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.StaticFiles.4.0.1\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.7\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +107,90 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\DictionaryExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\Disposable.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\HeaderExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\IFluentApi.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\MemoryStreamExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\ReflectionExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\StreamExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\StreamExtensions.F45.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\TaskExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\TaskHelper.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\UrlHelper.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpHeaderKeys.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpHeaderLine.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpHeaders.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpRequestLine.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IContext.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IFormData.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IHttpHeaders.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IPostedFile.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IRequest.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IRequestHeaders.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IResponse.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\IResponseHeaders.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinContext.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinFactory.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinKeys.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinRequest.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinRequestHeaders.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinResponse.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinResponseHeaders.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\PathMapping.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\QueryString.cs" />
+    <Compile Include="App_Packages\Simple.Owin.0.10.0\Status.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\ControlComponent.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\ControlComponentExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\DelegateComponent.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\IPipeline.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\IPipelineBuilder.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\IPipelineComponent.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\Pipeline.cs" />
+    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\PipelineExtensions.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\IOwinHost.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\IOwinHostService.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\IOwinServer.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\OwinHost.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\OwinHostContext.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\OwinHostState.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\ConsoleOutput.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\MultiTextWriter.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\NullTextWriter.cs" />
+    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\StringOutput.cs" />
+    <Compile Include="Controllers\API\ValuesController.cs" />
+    <Compile Include="WebOwinStartup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="PostBuild.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="www\index.html" />
+    <Content Include="www\scripts\hello.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="www\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File PostBuild.ps1 " $(ProjectDir) " " $(TargetDir) "</PostBuildEvent>
+  </PropertyGroup>
 </Project>
