@@ -22,8 +22,8 @@ namespace CpuOffOnWithPi.Web
             };
             using (WebApp.Start<WebOwinStartup>(startupOptions)) {
                 // if we're on my personal dev machine, launch a web-browser for quick testing.
-                if (Environment.MachineName.ToLower() == "gtx")
-                    LaunchWebBrowserTest();
+                //if (Environment.MachineName.ToLower() == "gtx")
+                //    LaunchWebBrowserTest();
                 //Console.WriteLine("Press Enter to quit.");
                 //Console.ReadKey();
                 shutDown.WaitOne(); // this strategy pulled from https://stackoverflow.com/a/17542760/7656
