@@ -166,3 +166,5 @@ logs/*
 node_modules/
 */app/lib/*
 tmp
+dist
+coverage
