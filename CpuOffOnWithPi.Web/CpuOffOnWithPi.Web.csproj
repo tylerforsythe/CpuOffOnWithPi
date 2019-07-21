@@ -170,13 +170,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="www\index.html" />
-    <Content Include="www\scripts\hello.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="www\images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
       <Visible>False</Visible>
