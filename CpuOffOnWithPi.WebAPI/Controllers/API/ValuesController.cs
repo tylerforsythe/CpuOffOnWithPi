@@ -17,7 +17,7 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
 
         // GET api/values/5 
         public string Get(int id) {
-            return "value";
+            return "value" + id;
         }
 
         // GET api/values/terminate
@@ -26,7 +26,5 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
             Program.shutDown.Set(); // from https://stackoverflow.com/a/17542760/7656
             return "TERMINATE CMD";
         }
-
-        // other ideas: CPU usage, memory usage, disk usage, top 10 program usage by CPU or memory, etc
     } 
 }

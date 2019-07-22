@@ -1,3 +1,35 @@
 <md-card class="home">
-  <span class="md-title home-heading">{{$ctrl.title}}</span>
+  <!-- <span class="md-title home-heading">{{$ctrl.title}}</span> -->
+  
+  <span class="md-title home-heading bold">Power Switches</span>
+  <table>
+    <tr>
+      <td>Living Room</td>
+      <td><button class="md-button md-raised md-primary" ng-click="$ctrl.SwitchOn(1)">ON</button></td>
+      <td><button class="md-button md-raised md-warn" ng-click="$ctrl.SwitchOff(1)">OFF</button></td>
+    </tr>
+    <tr>
+      <td>Sharisse Nightstand</td>
+      <td><button class="md-button md-raised md-primary" ng-click="$ctrl.SwitchOn(2)">ON</button></td>
+      <td><button class="md-button md-raised md-warn" ng-click="$ctrl.SwitchOff(2)">OFF</button></td>
+    </tr>
+    <tr>
+      <td>Tyler Nightstand</td>
+      <td><button class="md-button md-raised md-primary" ng-click="$ctrl.SwitchOn(3)">ON</button></td>
+      <td><button class="md-button md-raised md-warn" ng-click="$ctrl.SwitchOff(3)">OFF</button></td>
+    </tr>
+    <tr>
+      <td>Living Room Amp</td>
+      <td><button class="md-button md-raised md-primary" ng-click="$ctrl.SwitchOn(4)">ON</button></td>
+      <td><button class="md-button md-raised md-warn" ng-click="$ctrl.SwitchOff(4)">OFF</button></td>
+    </tr>
+  </table>
+
+  <!-- <h1>Test One</h1>
+  <h2>Test One</h2>
+  <h3>Test One</h3>
+  <h4>Test One</h4>
+  <h5>Test One</h5>
+  <h6>Test One</h6> -->
+
 </md-card>

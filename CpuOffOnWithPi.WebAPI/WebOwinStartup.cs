@@ -20,6 +20,7 @@ namespace CpuOffOnWithPi.WebAPI
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { action = "Index", id = RouteParameter.Optional }
             );
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(config);
 
