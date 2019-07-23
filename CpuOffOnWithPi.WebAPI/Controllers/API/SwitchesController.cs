@@ -13,56 +13,26 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
     {
         // POST API/Switches/SetSwitch
         [HttpPost]
-        public string SetSwitch(int switchNumber, string status) {
+        public string SetSwitch(SwitchParameters parameters) {
             var values = new Dictionary<string, string>
             {
-                { "outletId", switchNumber.ToString() },
-                { "outletStatus", status }
+                { "outletId", parameters.SwitchNumber.ToString() },
+                { "outletStatus", parameters.Status }
             };
 
             var content = new FormUrlEncodedContent(values);
             var response = CpuOffOnWithPi.WebAPI.Program.client.PostAsync("http://rpi2.local/lightswitch.php", content).Result;
-            var responseString = response.Content.ReadAsStringAsync();
+            var responseString = response.Content.ReadAsStringAsync().Result;
 
             return "SUCCESS " + responseString;
         }
 
-        
-        public string SetSwitchGet(int switchNumber, string status) {
-            var values = new Dictionary<string, string>
-            {
-                { "outletId", switchNumber.ToString() },
-                { "outletStatus", status }
-            };
-
-            var content = new FormUrlEncodedContent(values);
-            var response = CpuOffOnWithPi.WebAPI.Program.client.PostAsync("http://rpi2.local/lightswitch.php", content).Result;
-            var responseString = response.Content.ReadAsStringAsync();
-
-            return "SUCCESS " + responseString;
-        }
-
-        
-        [HttpPost]
-        public string SetSwitchGetNoParam() {
-            var values = new Dictionary<string, string>
-            {
-                { "outletId", "1" },
-                { "outletStatus", "off" }
-            };
-
-            var content = new FormUrlEncodedContent(values);
-            var response = CpuOffOnWithPi.WebAPI.Program.client.PostAsync("http://rpi2.local/lightswitch.php", content).Result;
-            var responseString = response.Content.ReadAsStringAsync();
-
-            return "SUCCESS " + responseString;
+        public class SwitchParameters
+        {
+            public int SwitchNumber { get; set; }
+            public string Status { get; set; }
         }
         
-
-        // GET api/values/5 
-        public string Get(int id) {
-            return "Switches value " + id;
-        }
 
         // other ideas: CPU usage, memory usage, disk usage, top 10 program usage by CPU or memory, etc
     } 
