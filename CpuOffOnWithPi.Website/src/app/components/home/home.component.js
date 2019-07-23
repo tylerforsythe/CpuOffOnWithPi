@@ -13,7 +13,7 @@ class homeController {
 
     this.$timeout = $timeout;
     this.$http = $http;
-    // this.LoadTestServerValue();
+    this.LoadCpusFromServer();
   }
 
   SwitchOn(switchNumber) {
@@ -35,6 +35,14 @@ class homeController {
       status: outletStatus,
     }).then((data, status) => {
       console.log(`Outlet toggled! ${data.data}`);
+    });
+  }
+
+  LoadCpusFromServer() {
+    this.$http.post('http://localhost:8011/API/Cpu/GetCpus', {}).then((data, status) => {
+      const str = `Test Value ${data.data}`;
+      console.log(str);
+      console.log(data);
     });
   }
 }

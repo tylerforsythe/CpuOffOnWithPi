@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Configuration;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Owin;
 
 [assembly: OwinStartup(typeof(CpuOffOnWithPi.WebAPI.WebOwinStartup))]
@@ -36,6 +39,14 @@ namespace CpuOffOnWithPi.WebAPI
             {
                 "index.html"
             };
+
+            //config.Formatters.Clear();
+            //config.Formatters.Add(new JsonMediaTypeFormatter());
+            //config.Formatters.JsonFormatter.SerializerSettings =
+            //    new JsonSerializerSettings
+            //    {
+            //        ContractResolver = new CamelCasePropertyNamesContractResolver()
+            //    };
 
             app.UseFileServer(options);
         }

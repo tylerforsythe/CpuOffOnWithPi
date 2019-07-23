@@ -164,6 +164,7 @@
     <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\MultiTextWriter.cs" />
     <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\NullTextWriter.cs" />
     <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\StringOutput.cs" />
+    <Compile Include="Controllers\API\CpuController.cs" />
     <Compile Include="Controllers\API\SwitchesController.cs" />
     <Compile Include="Controllers\API\ValuesController.cs" />
     <Compile Include="WebOwinStartup.cs" />
