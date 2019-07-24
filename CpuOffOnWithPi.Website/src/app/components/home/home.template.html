@@ -27,6 +27,15 @@
     </tr>
   </table>
 
+  <div class="md-title home-heading bold" style="margin-top: 20px;">CPU Control</div>
+  <table>
+    <tr ng-repeat="cpu in $ctrl.CpuList">
+      <td>{{cpu.FriendlyName}}</td>
+      <td><button class="md-button md-raised md-primary" ng-click="$ctrl.TurnOnCpu(cpu)">ON</button></td>
+      <td><button class="md-button md-raised md-warn" ng-click="$ctrl.TurnOffCpu(cpu)">OFF</button></td>
+    </tr>
+  </table>
+
   <!-- <h1>Test One</h1>
   <h2>Test One</h2>
   <h3>Test One</h3>

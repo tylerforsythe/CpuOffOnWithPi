@@ -19,24 +19,25 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
         public string TurnOn(CpuOnParameters parameters) {
             // send wake-on-lan
 
-            return "SUCCESS " + parameters.MachineName;
+            return "SUCCESS " + parameters.IpAddress;
         }
 
         public class CpuOnParameters
         {
-            public string MachineName { get; set; }
+            public string IpAddress { get; set; }
+            public string MacAddress { get; set; }
         }
         
         // POST API/Cpu/TurnOff
         [HttpPost]
         public string TurnOff(CpuOffParameters parameters) {
-            var values = new Dictionary<string, string>
-            {
-                { "outletId", parameters.MachineName }
+            var values = new Dictionary<string, string> {
+                { "noname", "nothing" }
             };
 
             var content = new FormUrlEncodedContent(values);
-            var response = CpuOffOnWithPi.WebAPI.Program.client.PostAsync("http://rpi2.local/lightswitch.php", content).Result;
+            var cpuUrl = $"http://{parameters.IpAddress}/API/Values/Shutdown";
+            var response = CpuOffOnWithPi.WebAPI.Program.SingleWebClient.PostAsync(cpuUrl, content).Result;
             var responseString = response.Content.ReadAsStringAsync().Result;
 
             return "SUCCESS " + responseString;
@@ -44,7 +45,8 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
 
         public class CpuOffParameters
         {
-            public string MachineName { get; set; }
+            public string IpAddress { get; set; }
+            public string MacAddress { get; set; }
         }
 
 
@@ -57,19 +59,19 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
             return r;
         }
 
-        private List<CpuInfo> ReadCpuConfig() {
-            var cpus = new List<CpuInfo>();
-            var rawCpuCount = ConfigurationManager.AppSettings["CpuInfoCount"];
+        private List<CpuConfig> ReadCpuConfig() {
+            var cpus = new List<CpuConfig>();
+            var rawCpuCount = ConfigurationManager.AppSettings["CpuConfigCount"];
             var cpuCountNbr = 0;
             if (string.IsNullOrEmpty(rawCpuCount) || !int.TryParse(rawCpuCount, out cpuCountNbr))
                 return cpus;
 
             for (var i = 1; i <= cpuCountNbr; ++i) {
-                var rawInfo = ConfigurationManager.AppSettings["CpuInfo" + i.ToString()];
+                var rawInfo = ConfigurationManager.AppSettings["CpuConfig" + i.ToString()];
                 if (string.IsNullOrEmpty(rawInfo))
                     continue;
                 var rawSplit = rawInfo.Split(new string[] {"|"}, StringSplitOptions.RemoveEmptyEntries);
-                var cpu = new CpuInfo();
+                var cpu = new CpuConfig();
                 cpu.FriendlyName = rawSplit[0];
                 cpu.MachineName = rawSplit[1];
                 cpu.IpAddress = rawSplit[2];
@@ -80,7 +82,7 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
             return cpus;
         }
 
-        public class CpuInfo
+        public class CpuConfig
         {
             public string FriendlyName { get; set; }
             public string MachineName { get; set; }

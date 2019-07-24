@@ -14,6 +14,7 @@ class homeController {
     this.$timeout = $timeout;
     this.$http = $http;
     this.LoadCpusFromServer();
+    this.CpuList = [];
   }
 
   SwitchOn(switchNumber) {
@@ -40,9 +41,31 @@ class homeController {
 
   LoadCpusFromServer() {
     this.$http.post('http://localhost:8011/API/Cpu/GetCpus', {}).then((data, status) => {
-      const str = `Test Value ${data.data}`;
+      this.CpuList = data.data;
+      const str = `CPU Count ${data.data.length}`;
       console.log(str);
       console.log(data);
+    });
+  }
+
+
+  TurnOnCpu(cpu) {
+    const parameters = {
+      IpAddress: cpu.IpAddress,
+      MacAddress: cpu.MacAddress,
+    };
+    this.$http.post('http://localhost:8011/API/Cpu/TurnOn', parameters).then((data, status) => {
+      console.log('Turned On Response: ' + data.data);
+    });
+  }
+
+  TurnOffCpu(cpu) {
+    const parameters = {
+      IpAddress: cpu.IpAddress,
+      MacAddress: cpu.MacAddress,
+    };
+    this.$http.post('http://localhost:8011/API/Cpu/TurnOn', parameters).then((data, status) => {
+      console.log('Turned Off Response: ' + data.data);
     });
   }
 }

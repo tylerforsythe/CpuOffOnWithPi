@@ -21,7 +21,7 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
             };
 
             var content = new FormUrlEncodedContent(values);
-            var response = CpuOffOnWithPi.WebAPI.Program.client.PostAsync("http://rpi2.local/lightswitch.php", content).Result;
+            var response = CpuOffOnWithPi.WebAPI.Program.SingleWebClient.PostAsync("http://rpi2.local/lightswitch.php", content).Result;
             var responseString = response.Content.ReadAsStringAsync().Result;
 
             return "SUCCESS " + responseString;

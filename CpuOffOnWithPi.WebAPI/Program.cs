@@ -14,7 +14,7 @@ namespace CpuOffOnWithPi.WebAPI
     class Program
     {
         public static System.Threading.ManualResetEvent shutDown = new ManualResetEvent(false);
-        public static readonly HttpClient client = new HttpClient();
+        public static readonly HttpClient SingleWebClient = new HttpClient();
 
         static void Main(string[] args) {
             string baseUrl = @"http://*:" + ConfigurationManager.AppSettings["OwinHostPortNumber"];
