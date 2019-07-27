@@ -64,7 +64,7 @@ class homeController {
       IpAddress: cpu.IpAddress,
       MacAddress: cpu.MacAddress,
     };
-    this.$http.post('http://localhost:8011/API/Cpu/TurnOn', parameters).then((data, status) => {
+    this.$http.post('http://localhost:8011/API/Cpu/TurnOff', parameters).then((data, status) => {
       console.log('Turned Off Response: ' + data.data);
     });
   }

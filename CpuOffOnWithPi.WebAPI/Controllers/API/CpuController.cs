@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using CpuOffOnWithPi.WebAPI;
+using EasyWakeOnLan;
+using Microsoft.Owin.BuilderProperties;
 using Newtonsoft.Json;
 
 namespace CpuOffOnWithPi.WebAPI.Controllers.API
@@ -17,7 +19,11 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
         // POST API/Cpu/TurnOn
         [HttpPost]
         public string TurnOn(CpuOnParameters parameters) {
-            // send wake-on-lan
+            string macAddress = parameters.MacAddress;
+            //Instance the class
+            EasyWakeOnLanClient wakeOnLanClient = new EasyWakeOnLanClient();
+            //Wake the remote PC
+            wakeOnLanClient.Wake(macAddress);
 
             return "SUCCESS " + parameters.IpAddress;
         }
@@ -37,7 +43,7 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
 
             var content = new FormUrlEncodedContent(values);
             var cpuUrl = $"http://{parameters.IpAddress}/API/Values/Shutdown";
-            var response = CpuOffOnWithPi.WebAPI.Program.SingleWebClient.PostAsync(cpuUrl, content).Result;
+            var response = CpuOffOnWithPi.WebAPI.Program.SingleWebClient.GetAsync(cpuUrl).Result;
             var responseString = response.Content.ReadAsStringAsync().Result;
 
             return "SUCCESS " + responseString;
