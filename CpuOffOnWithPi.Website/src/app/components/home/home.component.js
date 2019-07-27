@@ -13,8 +13,14 @@ class homeController {
 
     this.$timeout = $timeout;
     this.$http = $http;
-    this.LoadCpusFromServer();
     this.CpuList = [];
+    this.BaseUrl = '';
+    if (window.location.href.includes('8080')) {
+      this.BaseUrl = 'http://localhost:8011';
+    }
+
+    
+    this.LoadCpusFromServer();
   }
 
   SwitchOn(switchNumber) {
@@ -31,7 +37,7 @@ class homeController {
   }
 
   TransmitSwitch(outletId, outletStatus) {
-    this.$http.post('http://localhost:8011/API/Switches/SetSwitch', {
+    this.$http.post(this.BaseUrl + '/API/Switches/SetSwitch', {
       switchNumber: outletId,
       status: outletStatus,
     }).then((data, status) => {
@@ -40,7 +46,7 @@ class homeController {
   }
 
   LoadCpusFromServer() {
-    this.$http.post('http://localhost:8011/API/Cpu/GetCpus', {}).then((data, status) => {
+    this.$http.post(this.BaseUrl + '/API/Cpu/GetCpus', {}).then((data, status) => {
       this.CpuList = data.data;
       const str = `CPU Count ${data.data.length}`;
       console.log(str);
@@ -54,7 +60,7 @@ class homeController {
       IpAddress: cpu.IpAddress,
       MacAddress: cpu.MacAddress,
     };
-    this.$http.post('http://localhost:8011/API/Cpu/TurnOn', parameters).then((data, status) => {
+    this.$http.post(this.BaseUrl + '/API/Cpu/TurnOn', parameters).then((data, status) => {
       console.log('Turned On Response: ' + data.data);
     });
   }
@@ -64,7 +70,7 @@ class homeController {
       IpAddress: cpu.IpAddress,
       MacAddress: cpu.MacAddress,
     };
-    this.$http.post('http://localhost:8011/API/Cpu/TurnOff', parameters).then((data, status) => {
+    this.$http.post(this.BaseUrl + '/API/Cpu/TurnOff', parameters).then((data, status) => {
       console.log('Turned Off Response: ' + data.data);
     });
   }

@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\WinSCP\WinSCP.com" /ini=nul /script="C:\home\projects\Custom Tools\CpuOffOnWithPi\CpuOffOnWithPi.SelfUpdate\bin\Debug\scp-copy.txt"
