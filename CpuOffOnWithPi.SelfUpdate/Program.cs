@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,9 +36,16 @@ namespace CpuOffOnWithPi.SelfUpdate
 
             
             Process p = new Process();
-            p.StartInfo.FileName = "mono";
-            p.StartInfo.Arguments = $"{launchPathWhenDone}";
-            //p.StartInfo.Verb = "runas";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+                p.StartInfo.FileName = $"{launchPathWhenDone}";
+                p.StartInfo.Arguments = "";
+                p.StartInfo.Verb = "runas";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
+                p.StartInfo.FileName = "mono";
+                p.StartInfo.Arguments = $"{launchPathWhenDone}";
+            }
+
             p.Start();
         }
 
