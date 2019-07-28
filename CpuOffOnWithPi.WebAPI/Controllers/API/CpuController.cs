@@ -58,11 +58,17 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
 
         [HttpPost]
         public HttpResponseMessage GetCpus() {
-            var cpus = ReadCpuConfig();
-            var s = JsonConvert.SerializeObject(cpus);
-            var r = new HttpResponseMessage();
-            r.Content = new StringContent(s, Encoding.UTF8, "application/json");
-            return r;
+            try {
+                var cpus = ReadCpuConfig();
+                var s = JsonConvert.SerializeObject(cpus);
+                var r = new HttpResponseMessage();
+                r.Content = new StringContent(s, Encoding.UTF8, "application/json");
+                return r;
+            }
+            catch (Exception e) {
+                Program.Log($"GetCpus error: {e.Message} {e.StackTrace}");
+                throw e;
+            }
         }
 
         private List<CpuConfig> ReadCpuConfig() {

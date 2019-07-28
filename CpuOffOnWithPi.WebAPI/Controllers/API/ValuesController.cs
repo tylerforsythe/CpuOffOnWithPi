@@ -26,6 +26,20 @@ namespace CpuOffOnWithPi.WebAPI.Controllers.API
 
         // GET api/values/terminate
         [HttpGet]
+        public string Log() {
+            var lines = File.ReadAllLines(Program.LogPath);
+            for (var i = 0; i < lines.Length; ++i) {
+                var l = lines[i];
+                l = l.Replace(Environment.NewLine, "<br/>");
+                lines[i] = l;
+            }
+
+            return string.Join("", lines);
+        }
+        
+
+        // GET api/values/terminate
+        [HttpGet]
         public string Terminate() {
             Program.shutDown.Set(); // from https://stackoverflow.com/a/17542760/7656
             return "TERMINATE CMD";

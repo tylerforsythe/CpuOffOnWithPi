@@ -23,30 +23,29 @@ namespace CpuOffOnWithPi.WebAPI
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { action = "Index", id = RouteParameter.Optional }
             );
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            
+            if (Environment.MachineName.ToLower() == "gtx")
+                app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(config);
 
             var physicalFileSystem = new PhysicalFileSystem(ConfigurationManager.AppSettings["OwinHostWebsitePath"]);
-            var options = new FileServerOptions
-            {
+            var options = new FileServerOptions {
                 EnableDefaultFiles = true,
                 FileSystem = physicalFileSystem
             };
             options.StaticFileOptions.FileSystem = physicalFileSystem;
             options.StaticFileOptions.ServeUnknownFileTypes = true;
-            options.DefaultFilesOptions.DefaultFileNames = new[]
-            {
+            options.DefaultFilesOptions.DefaultFileNames = new[] {
                 "index.html"
             };
 
-            //config.Formatters.Clear();
-            //config.Formatters.Add(new JsonMediaTypeFormatter());
-            //config.Formatters.JsonFormatter.SerializerSettings =
-            //    new JsonSerializerSettings
-            //    {
-            //        ContractResolver = new CamelCasePropertyNamesContractResolver()
-            //    };
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+            config.Formatters.JsonFormatter.SerializerSettings =
+                new JsonSerializerSettings {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                };
 
             app.UseFileServer(options);
         }

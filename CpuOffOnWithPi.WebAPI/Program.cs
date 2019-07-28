@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -15,6 +17,7 @@ namespace CpuOffOnWithPi.WebAPI
     {
         public static System.Threading.ManualResetEvent shutDown = new ManualResetEvent(false);
         public static readonly HttpClient SingleWebClient = new HttpClient();
+        public static string LogPath = @"log.txt";
 
         static void Main(string[] args) {
             string baseUrl = @"http://*:" + ConfigurationManager.AppSettings["OwinHostPortNumber"];
@@ -28,6 +31,7 @@ namespace CpuOffOnWithPi.WebAPI
                 //    LaunchWebBrowserTest();
                 //Console.WriteLine("Press Enter to quit.");
                 //Console.ReadKey();
+                Log($"Startup!");
                 shutDown.WaitOne(); // this strategy pulled from https://stackoverflow.com/a/17542760/7656
             }
         }
@@ -35,6 +39,13 @@ namespace CpuOffOnWithPi.WebAPI
         static void LaunchWebBrowserTest() {
             var url = "http://localhost:" + ConfigurationManager.AppSettings["OwinHostPortNumber"] + "/";
             Process.Start("chrome.exe", url);
+        }
+
+        public static void Log(string message) {
+            var l = new List<string>();
+            l.Add($"{DateTime.Now.ToShortDateString()} {DateTime.Now.ToShortTimeString()}  {message}");
+            l.Add(Environment.NewLine);
+            File.AppendAllLines(LogPath, l);
         }
     }
 }
