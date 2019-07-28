@@ -9,6 +9,13 @@ I like it that way.
 Originally I intended it to be hooked up to the power switch of the CPU via the Pi GPIO headers, but 
 the CPU EXE is intended to make that need obsolete.
 
+Nutshell to get it to work:
+
+* CpuExe running on each Windows machine
+* WebAPI running on a Pi that is the brains of the whole thing
+* Website also running on the Pi and server by the WebAPI project
+* Pi that runs the WebAPI must be running Mono version 6+. It may work in earlier versions, but definitely not 4.6.X.
+
 CpuExe
 ------
 
@@ -26,3 +33,10 @@ the purpose is to give an easy to use interface to see if the machine is up and 
 
 Intention is to build this so that I can have it controlling multiple machines from one Pi web host, that will be 
 running this project and talking to the CpuExe's on other [Windows] machines.
+
+SelfUpdate
+----------
+
+I use this connected with the WebAPI (and soon CpuExe) so that, using a local network share, I can have the app
+update and restart itself without me having to kill it, copy files over, and then restart it on the pi. That's annoying.
+This automates the whole thing with Visual Studio post-build events, a PowerShell, and small bit of logic in the API.
