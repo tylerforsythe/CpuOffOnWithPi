@@ -26,19 +26,12 @@ namespace CpuOffOnWithPi.WebAPI
                 ServerFactory = "Microsoft.Owin.Host.HttpListener"
             };
             using (WebApp.Start<WebOwinStartup>(startupOptions)) {
-                // if we're on my personal dev machine, launch a web-browser for quick testing.
-                //if (Environment.MachineName.ToLower() == "gtx")
-                //    LaunchWebBrowserTest();
                 //Console.WriteLine("Press Enter to quit.");
                 //Console.ReadKey();
-                Log($"Startup!");
+                //Log($"Startup!");
                 shutDown.WaitOne(); // this strategy pulled from https://stackoverflow.com/a/17542760/7656
+                Thread.Sleep(300);
             }
-        }
-
-        static void LaunchWebBrowserTest() {
-            var url = "http://localhost:" + ConfigurationManager.AppSettings["OwinHostPortNumber"] + "/";
-            Process.Start("chrome.exe", url);
         }
 
         public static void Log(string message) {

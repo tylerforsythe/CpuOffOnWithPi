@@ -25,6 +25,7 @@ namespace CpuOffOnWithPi.CpuExe
                 //Console.WriteLine("Press Enter to quit.");
                 //Console.ReadKey();
                 shutDown.WaitOne(); // this strategy pulled from https://stackoverflow.com/a/17542760/7656
+                Thread.Sleep(300);
             }
         }
 
