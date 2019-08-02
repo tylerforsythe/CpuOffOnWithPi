@@ -25,6 +25,7 @@ namespace CpuOffOnWithPi.SelfUpdate
 
             var i = 0;
             // THIS IS INCREDIBLY INSECURE! But it's only running on my personal machines, internally, so who cares.
+            // To make it a bit more secure, we should have a "whitelist" and/or "blacklist".
             var sourceDirectory = args[i++];
             var targetDirectory = args[i++];
             var launchPathWhenDone = args[i++];

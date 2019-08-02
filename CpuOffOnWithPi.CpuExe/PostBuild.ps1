@@ -2,8 +2,15 @@
 # Copy the www directory to the output dir.
 # This is simpler than trying to remember to make everything in the www folder "copy if changed" build action
 
-$projectDir = $args[0].Trim();
-$targetDir = $args[1].Trim();
+# post build event syntax
+# powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File PostBuild.ps1 " $(ProjectDir) " " $(TargetDir) "
+
+# I used to pass in arguments frmo the project post-build event, but I decided I want to better control deployment
+$arg0 = "C:\home\projects\Custom Tools\CpuOffOnWithPi\CpuOffOnWithPi.CpuExe\"; #$args[0];
+$arg1 = "C:\home\projects\Custom Tools\CpuOffOnWithPi\CpuOffOnWithPi.CpuExe\bin\Debug\"; #$args[1];
+
+$projectDir = $arg0.Trim();
+$targetDir = $arg1.Trim();
 
 Write-Host "Project: " $projectDir
 Write-Host "Target: " $targetDir
@@ -24,8 +31,8 @@ Copy-Item -Path $sourceRoot -Recurse -Destination $destinationRoot -Container -F
 
 # Now prep the CpuExe update and execute on remote server
 
-$projectDir = $args[0].Trim();
-$targetDir = $args[1].Trim() + "\*";
+$projectDir = $arg0.Trim();
+$targetDir = $arg1.Trim() + "\*";
 
 $destinationRoot = "\\readyshare\USB_Storage\software-update\fs\cpuexe\";
 

@@ -59,6 +59,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\home\projects\Custom Tools\CpuOffOnWithPi\CpuOffOnWithPi.SelfUpdate\bin\Debug\deploy.bat"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

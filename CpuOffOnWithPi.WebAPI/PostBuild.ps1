@@ -1,6 +1,13 @@
 ﻿
-$projectDir = $args[0].Trim();
-$targetDir = $args[1].Trim() + "\*";
+# post build event syntax
+# powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File PostBuild.ps1 " $(ProjectDir) " " $(TargetDir) "
+
+# I used to pass in arguments frmo the project post-build event, but I decided I want to better control deployment
+$arg0 = "C:\home\projects\Custom Tools\CpuOffOnWithPi\CpuOffOnWithPi.WebAPI\"; #$args[0];
+$arg1 = "C:\home\projects\Custom Tools\CpuOffOnWithPi\CpuOffOnWithPi.WebAPI\bin\Debug\"; #$args[1];
+
+$projectDir = $arg0.Trim();
+$targetDir = $arg1.Trim() + "\*";
 
 $destinationRoot = "\\readyshare\USB_Storage\software-update\pi3portal\webapi\";
 
